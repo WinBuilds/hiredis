@@ -2,6 +2,9 @@
 #define _WIN32_HELPER_INCLUDE
 #ifdef _MSC_VER
 
+#include <stdio.h>  
+#include <stdarg.h>
+
 #ifndef inline
 #define inline __inline
 #endif

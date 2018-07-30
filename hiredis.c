@@ -43,6 +43,8 @@
 #include "net.h"
 #include "sds.h"
 
+#include "timeval.h"
+
 static redisReply *createReplyObject(int type);
 static void *createStringObject(const redisReadTask *task, char *str, size_t len);
 static void *createArrayObject(const redisReadTask *task, int elements);
@@ -509,7 +511,7 @@ int redisFormatSdsCommandArgv(sds *target, int argc, const char **argv,
     assert(sdslen(cmd)==totlen);
 
     *target = cmd;
-    return totlen;
+    return (int)totlen;
 }
 
 void redisFreeSdsCommand(sds cmd) {
@@ -585,6 +587,9 @@ redisReader *redisReaderCreate(void) {
 
 static redisContext *redisContextInit(void) {
     redisContext *c;
+    
+    if (redisNetStartup())
+       return NULL;
 
     c = calloc(1,sizeof(redisContext));
     if (c == NULL)
@@ -602,17 +607,21 @@ static redisContext *redisContextInit(void) {
 }
 
 void redisFree(redisContext *c) {
-    if (c == NULL)
-        return;
-    if (c->fd > 0)
-        close(c->fd);
-    sdsfree(c->obuf);
-    redisReaderFree(c->reader);
-    free(c->tcp.host);
-    free(c->tcp.source_addr);
-    free(c->unix_sock.path);
-    free(c->timeout);
-    free(c);
+   redisNetCleanup();
+
+   if (c == NULL)
+      return;
+
+   if (c->fd > 0)
+      close(c->fd);
+
+   sdsfree(c->obuf);
+   redisReaderFree(c->reader);
+   free(c->tcp.host);
+   free(c->tcp.source_addr);
+   free(c->unix_sock.path);
+   free(c->timeout);
+   free(c);
 }
 
 int redisFreeKeepFd(redisContext *c) {
@@ -623,24 +632,24 @@ int redisFreeKeepFd(redisContext *c) {
 }
 
 int redisReconnect(redisContext *c) {
-    c->err = 0;
-    memset(c->errstr, '\0', strlen(c->errstr));
+   c->err = 0;
+   memset(c->errstr, '\0', strlen(c->errstr));
 
-    if (c->fd > 0) {
-        close(c->fd);
-    }
+   if (c->fd > 0) {
+      close(c->fd);
+   }
 
-    sdsfree(c->obuf);
-    redisReaderFree(c->reader);
+   sdsfree(c->obuf);
+   redisReaderFree(c->reader);
 
-    c->obuf = sdsempty();
-    c->reader = redisReaderCreate();
+   c->obuf = sdsempty();
+   c->reader = redisReaderCreate();
 
-    if (c->connection_type == REDIS_CONN_TCP) {
-        return redisContextConnectBindTcp(c, c->tcp.host, c->tcp.port,
-                c->timeout, c->tcp.source_addr);
-    } else if (c->connection_type == REDIS_CONN_UNIX) {
-        return redisContextConnectUnix(c, c->unix_sock.path, c->timeout);
+   if (c->connection_type == REDIS_CONN_TCP) {
+      return redisContextConnectBindTcp(c, c->tcp.host, c->tcp.port,
+         c->timeout, c->tcp.source_addr);
+   } else if (c->connection_type == REDIS_CONN_UNIX) {
+      return redisContextConnectUnix(c, c->unix_sock.path, c->timeout);
     } else {
         /* Something bad happened here and shouldn't have. There isn't
            enough information in the context to reconnect. */

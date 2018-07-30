@@ -208,7 +208,7 @@ int string2ll(const char *s, size_t slen, long long *value) {
     if (negative) {
         if (v > ((unsigned long long)(-(LLONG_MIN+1))+1)) /* Overflow. */
             return REDIS_ERR;
-        if (value != NULL) *value = -v;
+        if (value != NULL) *value = 0-v;
     } else {
         if (v > LLONG_MAX) /* Overflow. */
             return REDIS_ERR;

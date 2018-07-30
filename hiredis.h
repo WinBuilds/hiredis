@@ -35,9 +35,18 @@
 #define __HIREDIS_H
 #include "read.h"
 #include <stdarg.h> /* for va_list */
-#include <sys/time.h> /* for struct timeval */
 #include <stdint.h> /* uintXX_t, etc */
 #include "sds.h" /* for sds */
+
+#if defined(_MSC_VER)
+
+#include <BaseTsd.h>
+typedef SSIZE_T ssize_t;
+#define strerror_r(errno,buf,len) strerror_s(buf,len,errno)
+
+#else
+#  include <sys/time.h>
+#endif
 
 #define HIREDIS_MAJOR 0
 #define HIREDIS_MINOR 13

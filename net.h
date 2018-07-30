@@ -36,6 +36,8 @@
 #define __NET_H
 
 #include "hiredis.h"
+int redisNetStartup(void);
+void redisNetCleanup(void);
 
 int redisCheckSocketError(redisContext *c);
 int redisContextSetTimeout(redisContext *c, const struct timeval tv);

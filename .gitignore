@@ -5,3 +5,7 @@
 /*.dylib
 /*.a
 /*.pc
+
+*.lnk
+*.VC.db
+*.VC.opendb

@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include <hiredis.h>
+#include <timeval.h>
 
 int main(int argc, char **argv) {
     unsigned int j;
