@@ -24,6 +24,11 @@
   <ItemGroup>
     <ClInclude Include="..\..\hiredis.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="hiredis.vcxproj">
+      <Project>{2f6c0861-f9ef-4738-b09c-55e0563faa0c}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{3409BCF8-1E0C-46A7-8096-A9DCB51689EC}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
