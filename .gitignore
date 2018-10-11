@@ -9,5 +9,6 @@
 *.lnk
 *.VC.db
 *.VC.opendb
-.vs
-ipch
+.vs/
+ipch/
+
