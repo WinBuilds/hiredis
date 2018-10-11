@@ -34,6 +34,12 @@
 #define __HIREDIS_READ_H
 #include <stdio.h> /* for size_t */
 
+#if defined(HIREDISDLL_EXPORTS)
+#define HIREDIS_API __declspec(dllexport)
+#else
+#define HIREDIS_API
+#endif
+
 #define REDIS_ERR -1
 #define REDIS_OK 0
 
@@ -95,10 +101,10 @@ typedef struct redisReader {
 } redisReader;
 
 /* Public API for the protocol parser. */
-redisReader *redisReaderCreateWithFunctions(redisReplyObjectFunctions *fn);
-void redisReaderFree(redisReader *r);
-int redisReaderFeed(redisReader *r, const char *buf, size_t len);
-int redisReaderGetReply(redisReader *r, void **reply);
+HIREDIS_API redisReader *redisReaderCreateWithFunctions(redisReplyObjectFunctions *fn);
+HIREDIS_API void redisReaderFree(redisReader *r);
+HIREDIS_API int redisReaderFeed(redisReader *r, const char *buf, size_t len);
+HIREDIS_API int redisReaderGetReply(redisReader *r, void **reply);
 
 #define redisReaderSetPrivdata(_r, _p) (int)(((redisReader*)(_r))->privdata = (_p))
 #define redisReaderGetObject(_r) (((redisReader*)(_r))->reply)
