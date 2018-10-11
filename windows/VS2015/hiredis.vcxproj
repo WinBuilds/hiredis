@@ -44,6 +44,7 @@
     <RootNamespace>hiredis</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>hiredislib</ProjectName>
+    <ProjectRoot>$(WINBUILDS_ROOT)</ProjectRoot>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -91,20 +92,20 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <OutDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
-    <IntDir>$(SolutionDir)../../../../build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
+    <OutDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/lib/</OutDir>
+    <IntDir>$(WINBUILDS_ROOT)build_msvc14_$(Platform)/$(Configuration)/obj/$(ProjectName)/</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -123,10 +124,10 @@
     </Link>
     <PostBuildEvent>
       <Message>copying include header files...</Message>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\hiredis.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\read.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\hiredis.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\read.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\sds.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -147,10 +148,10 @@ copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platf
     </Link>
     <PostBuildEvent>
       <Message>copying include header files...</Message>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\hiredis.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\read.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\hiredis.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\read.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\sds.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -175,10 +176,10 @@ copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platf
     </Link>
     <PostBuildEvent>
       <Message>copying include header files...</Message>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\hiredis.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\read.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\hiredis.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\read.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\sds.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -203,10 +204,10 @@ copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platf
     </Link>
     <PostBuildEvent>
       <Message>copying include header files...</Message>
-      <Command>mkdir "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\hiredis.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\read.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
-copy "$(SolutionDir)..\..\sds.h" "$(SolutionDir)..\..\..\..\build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+      <Command>mkdir "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\hiredis.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\read.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
+copy "$(SolutionDir)..\..\sds.h" "$(WINBUILDS_ROOT)build_msvc14_$(Platform)\$(Configuration)\include\hiredis\"
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

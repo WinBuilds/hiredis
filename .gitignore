@@ -12,3 +12,6 @@
 .vs/
 ipch/
 
+build-*/
+build_*/
+
